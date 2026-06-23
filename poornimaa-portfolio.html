@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poornimaa Shri V K | QA Automation Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f0e;
+    --surface: #141612;
+    --surface2: #1a1c19;
+    --ink: #edecea;
+    --ink2: #9a9890;
+    --ink3: #5a5955;
+    --accent: #3ecf8e;
+    --accent-light: rgba(62,207,142,0.1);
+    --accent2: #f07b3f;
+    --accent2-light: rgba(240,123,63,0.1);
+    --line: rgba(255,255,255,0.07);
+    --mono: 'Inter', sans-serif;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(13,15,14,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink2);
+    letter-spacing: 0.05em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+
+    background: var(--surface2);
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .nav-cta { color: var(--bg) !important; background: var(--accent) !important; }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: var(--display);
+  font-size: clamp(3.2rem, 6vw, 5.8rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--ink3);
+  }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink2);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0d0f0e;
+    background: var(--accent);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-secondary {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink2);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* HERO CARD */
+  .hero-card {
+    background: var(--surface);
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-card-header {
+    background: var(--surface2);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .hero-card-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 52px;
+  }
+  .code-block {
+    padding: 1.5rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+  .code-comment { color: #7a7a6e; }
+  .code-keyword { color: #c58a4e; }
+  .code-fn { color: #4e9e8c; }
+  .code-string { color: #6fb57b; }
+  .code-var { color: #a5b4fc; }
+  .code-num { color: #f9a875; }
+  .code-indent { padding-left: 1.5rem; }
+  .code-indent2 { padding-left: 3rem; }
+  .code-pass { color: #28c840; font-weight: 500; }
+  .status-bar {
+    padding: 0.75rem 1.25rem;
+    background: #1a1a16;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .status-pass { color: #28c840; }
+  .status-info { color: var(--ink3); }
+
+  /* STATS */
+  .stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 2.5rem 4rem;
+  }
+  .stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    padding: 0 2rem;
+    border-right: 1px solid var(--line);
+  }
+  .stat-item:first-child { padding-left: 0; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+  .skill-card-title {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .skill-card-desc {
+    font-size: 13.5px;
+    color: var(--ink2);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    color: var(--ink2);
+    background: var(--bg);
+  }
+  .tag.green { background: var(--accent-light); color: var(--accent); border-color: transparent; }
+  .tag.orange { background: var(--accent2-light); color: var(--accent2); border-color: transparent; }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2rem 2.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transition: transform 0.2s;
+    transform-origin: bottom;
+  }
+  .project-card:hover { border-color: var(--line); transform: translateX(4px); }
+  .project-card:hover::before { transform: scaleY(1); }
+  .project-type {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .project-title {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .project-desc {
+    font-size: 14px;
+    color: var(--ink2);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+  .project-metrics {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .metric {
+    text-align: center;
+  }
+  .metric-val {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .metric-val span { color: var(--accent); }
+  .metric-lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink3);
+  }
+
+  /* EXPERIENCE */
+  .experience-list { display: flex; flex-direction: column; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .exp-item:first-child { padding-top: 0; }
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.05em;
+    padding-top: 3px;
+  }
+  .exp-company {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .exp-role {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .exp-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .exp-points li {
+    font-size: 14px;
+    color: var(--ink2);
+    font-weight: 300;
+    display: flex;
+    gap: 0.75rem;
+  }
+  .exp-points li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 2px;
+    font-family: var(--mono);
+  }
+
+  /* TOOLS */
+  .tools-section {
+    background: var(--surface);
+    padding: 5rem 4rem;
+  }
+  .tools-inner { max-width: 1200px; margin: 0 auto; }
+  .tools-section .section-label { color: var(--accent); }
+  .tools-section .section-label::before { background: var(--accent); }
+  .tools-section h2 { color: var(--ink); }
+  .tools-marquee-wrap { overflow: hidden; margin: 0 -4rem; }
+  .tools-marquee {
+    display: flex;
+    gap: 1rem;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .tool-pill {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ink2);
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tool-pill:hover { border-color: #6fb57b; color: #6fb57b; }
+  .tools-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .tool-category {
+    background: var(--surface2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .tool-cat-title {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+  .tool-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tool-chip {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--ink2);
+  }
+  .tool-chip.highlight {
+    background: var(--accent-light);
+    border-color: rgba(62,207,142,0.3);
+    color: var(--accent);
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+  }
+  .contact-card h3 {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .contact-card p {
+    font-size: 14px;
+    color: var(--ink2);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink2);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .avail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+  }
+  .avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.05em;
+  }
+  .footer-copy span { color: var(--accent); }
+
+  /* FADE-IN ANIMATION */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .stats-strip { padding: 2rem 1.5rem; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .stat-item { padding: 0; border: none; }
+    section { padding: 4rem 1.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .tools-section { padding: 4rem 1.5rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+    .tools-grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span>~/</span>poornimaa.tester</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">QA Automation Engineer</div>
+      <h1>Poornimaa Shri</h1>
+      <p class="hero-desc">Aspiring QA Automation Engineer with hands-on experience in Selenium WebDriver, TestNG, and API testing. Passionate about catching bugs early, building reliable test suites, and delivering quality software.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View projects</a>
+        <a href="https://drive.google.com/file/d/1t-oG82TgUlRZefSrfG7S5kjPj72oht1O/view?usp=drivesdk" 
+   class="btn-secondary" 
+   target="_blank"
+   style="display:flex; align-items:center; gap:6px;">
+   Resume
+</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <div class="hero-card-title">ZenvoraTest.java</div>
+      </div>
+      <div class="code-block" style="background:#141412; color:#d4d2ce;">
+        <div class="code-comment">// E2E – Zenvora checkout flow</div>
+        <div style="margin-top:0.5rem;"><span class="code-keyword">@Test</span></div>
+        <div><span class="code-keyword">public void</span> <span class="code-fn">testCheckoutFlow</span>() {</div>
+        <div class="code-indent"><span class="code-var">driver</span>.<span class="code-fn">get</span>(<span class="code-string">"https://zenvora.com"</span>);</div>
+        <div class="code-indent"><span class="code-fn">addToCart</span>(<span class="code-string">"SKU-001"</span>);</div>
+        <div class="code-indent"><span class="code-fn">proceedToCheckout</span>();</div>
+        <div class="code-indent"><span class="code-var">String</span> status = <span class="code-fn">confirmOrder</span>();</div>
+        <div style="margin-top:0.25rem;" class="code-indent"><span class="code-fn">Assert</span>.<span class="code-fn">assertEquals</span>(</div>
+        <div class="code-indent2">status, <span class="code-string">"Order Placed"</span></div>
+        <div class="code-indent">);</div>
+        <div>}</div>
+      </div>
+      <div class="status-bar">
+        <span class="code-pass">✓</span>
+        <span class="status-pass">2 passed</span>
+        <span class="status-info">·</span>
+        <span class="status-info">0 failed</span>
+        <span class="status-info">·</span>
+        <span class="status-info">2.14s</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">Java</div>
+      <div class="stat-label">Primary Language</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5<span>+</span></div>
+      <div class="stat-label">Testing Types</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1<span>+</span></div>
+      <div class="stat-label">E2E Project</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6<span>+</span></div>
+      <div class="stat-label">Tools mastered</div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Expertise</div>
+  <h2>What I bring<br>to your team</h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🧪</div>
+      <div class="skill-card-title">Automation Testing</div>
+      <div class="skill-card-desc">Building reliable end-to-end test suites using Selenium WebDriver with TestNG and Cucumber BDD. Applying Page Object Model for clean, maintainable test code.</div>
+      <div class="skill-tags">
+        <span class="tag green">Selenium WebDriver</span>
+        <span class="tag green">TestNG</span>
+        <span class="tag green">Cucumber BDD</span>
+        <span class="tag">POM</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🔌</div>
+      <div class="skill-card-title">API Testing</div>
+      <div class="skill-card-desc">Validating REST APIs for correctness, performance, and reliability using Postman. Writing automated API test collections with assertions and environment variables.</div>
+      <div class="skill-tags">
+        <span class="tag green">Postman</span>
+        <span class="tag green">REST APIs</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Data Validation</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-card-title">CI/CD & Version Control</div>
+      <div class="skill-card-desc">Integrating automated test pipelines with Jenkins for continuous testing. Managing source code and test scripts with Git and GitHub workflows.</div>
+      <div class="skill-tags">
+        <span class="tag orange">Jenkins</span>
+        <span class="tag orange">Git</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">CI Pipelines</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📊</div>
+      <div class="skill-card-title">Performance Testing</div>
+      <div class="skill-card-desc">Load and stress testing web applications using Apache JMeter to identify bottlenecks and validate application behaviour under peak traffic conditions.</div>
+      <div class="skill-tags">
+        <span class="tag green">Apache JMeter</span>
+        <span class="tag green">Load Testing</span>
+        <span class="tag">Stress Testing</span>
+        <span class="tag">Reports</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">💻</div>
+      <div class="skill-card-title">Programming</div>
+      <div class="skill-card-desc">Writing clean automation scripts and test utilities primarily in Java. Solid understanding of OOP concepts applied to building reusable, data-driven frameworks.</div>
+      <div class="skill-tags">
+        <span class="tag green">Java</span>
+        <span class="tag green">C</span>
+        <span class="tag">Data-Driven</span>
+        <span class="tag">OOP</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🔬</div>
+      <div class="skill-card-title">QA Methodologies</div>
+      <div class="skill-card-desc">Strong foundation in SDLC, STLC, and Agile methodology. Performing functional, regression, and smoke testing with a shift-left mindset for early quality assurance.</div>
+      <div class="skill-tags">
+        <span class="tag orange">Agile / STLC</span>
+        <span class="tag orange">Regression Testing</span>
+        <span class="tag">Smoke Testing</span>
+        <span class="tag">Functional Testing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding-top: 0;">
+  <div class="section-label">Featured work</div>
+  <h2>Projects that<br>made an impact</h2>
+  <div class="projects-list">
+    <div class="project-card fade-in">
+      <div>
+        <div class="project-type">E-commerce · Selenium + Java</div>
+        <div class="project-title">Zenvora Living – End to End E-commerce Testing</div>
+        <div class="project-desc">Performed end-to-end testing for an e-commerce application covering critical user workflows and full application functionality. Focused on automation testing using Selenium WebDriver with TestNG, API validation via Postman, regression testing, performance testing with JMeter, and CI/CD integration through Jenkins.</div>
+        <div class="skill-tags">
+          <span class="tag green">Selenium WebDriver</span>
+          <span class="tag green">TestNG</span>
+          <span class="tag green">Postman</span>
+          <span class="tag">JMeter</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Jenkins</span>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <div class="metric-val">E2E</div>
+          <div class="metric-lbl">Coverage</div>
+        </div>
+        <div class="metric">
+          <div class="metric-val">5<span>+</span></div>
+          <div class="metric-lbl">Tools used</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div>
+        <div class="project-type">Event Management · Selenium + Java + Cucumber BDD</div>
+        <div class="project-title">Occasio – Multi-Role Event Management Testing</div>
+        <div class="project-desc">Conducted end-to-end testing of a multi-role Event Management platform to validate key business
+          workflows and ensure application quality through automation, API, and regression testing.</div>
+        <div class="skill-tags">
+          <span class="tag green">Selenium WebDriver</span>
+          <span class="tag green">TestNG</span>
+          <span class="tag green">Cucumber BDD</span>
+          <span class="tag green">Postman</span>
+          <span class="tag">JMeter</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Jenkins</span>
+        </div>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <div class="metric-val">E2E</div>
+          <div class="metric-lbl">Coverage</div>
+        </div>
+        <div class="metric">
+          <div class="metric-val">5<span>+</span></div>
+          <div class="metric-lbl">Tools used</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="padding-top: 0;">
+  <div class="section-label">Credentials</div>
+  <h2>Certifications &amp;<br>Education</h2>
+  <div class="experience-list">
+    <div class="exp-item fade-in">
+      <div class="exp-date">Jan – May 2026</div>
+      <div>
+        <div class="exp-company">Software Testing</div>
+        <div class="exp-role">Pumo Technovation</div>
+        <ul class="exp-points">
+          <li>Completed a comprehensive software testing certification covering manual and automation testing fundamentals</li>
+          <li>Gained hands-on experience with Selenium WebDriver, TestNG, Postman, JMeter, Jenkins and Git</li>
+          <li>Applied learning directly to the Zenvora Living e-commerce project as the capstone deliverable</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item fade-in">
+      <div class="exp-date">2022 – 2026</div>
+      <div>
+        <div class="exp-company">B.Tech – Information Technology</div>
+        <div class="exp-role">K.L.N. College of Engineering, Sivagangai · CGPA: 8.86</div>
+        <ul class="exp-points">
+          <li>Completed Bachelor of Technology in Information Technology with a strong academic record of 8.86 CGPA</li>
+          <li>Gained strong foundation in programming, problem-solving, and software development principles throughout the degree</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item fade-in">
+      <div class="exp-date">2021 – 2022</div>
+      <div>
+        <div class="exp-company">HSC – Computer Science</div>
+        <div class="exp-role">Annamalaiyaar Matric Hr. Sec. School, Madurai · 88.5%</div>
+        <ul class="exp-points">
+          <li>Completed Higher Secondary Certificate with Computer Science specialisation, scoring 88.5%</li>
+          <li>Built early foundation in programming, logic building, and computational thinking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<div class="tools-section">
+  <div class="tools-inner">
+    <div class="section-label">Toolbox</div>
+    <h2>Technologies I work with</h2>
+    <div class="tools-marquee-wrap">
+      <div class="tools-marquee">
+        <span class="tool-pill">Selenium WebDriver</span>
+        <span class="tool-pill">TestNG</span>
+        <span class="tool-pill">Cucumber BDD</span>
+        <span class="tool-pill">Java</span>
+        <span class="tool-pill">Postman</span>
+        <span class="tool-pill">Apache JMeter</span>
+        <span class="tool-pill">Jenkins</span>
+        <span class="tool-pill">Git</span>
+        <span class="tool-pill">GitHub</span>
+        <span class="tool-pill">MySQL</span>
+        <span class="tool-pill">Page Object Model</span>
+        <span class="tool-pill">Data-Driven Framework</span>
+        <span class="tool-pill">Agile</span>
+        <span class="tool-pill">STLC</span>
+        <span class="tool-pill">Regression Testing</span>
+        <span class="tool-pill">Smoke Testing</span>
+        <span class="tool-pill">Selenium WebDriver</span>
+        <span class="tool-pill">TestNG</span>
+        <span class="tool-pill">Cucumber BDD</span>
+        <span class="tool-pill">Java</span>
+        <span class="tool-pill">Postman</span>
+        <span class="tool-pill">Apache JMeter</span>
+        <span class="tool-pill">Jenkins</span>
+        <span class="tool-pill">Git</span>
+        <span class="tool-pill">GitHub</span>
+        <span class="tool-pill">MySQL</span>
+        <span class="tool-pill">Page Object Model</span>
+        <span class="tool-pill">Data-Driven Framework</span>
+        <span class="tool-pill">Agile</span>
+        <span class="tool-pill">STLC</span>
+        <span class="tool-pill">Regression Testing</span>
+        <span class="tool-pill">Smoke Testing</span>
+      </div>
+    </div>
+    <div class="tools-grid-2">
+      <div class="tool-category">
+        <div class="tool-cat-title">Automation testing</div>
+        <div class="tool-list">
+          <span class="tool-chip highlight">Selenium WebDriver</span>
+          <span class="tool-chip highlight">TestNG</span>
+          <span class="tool-chip highlight">Cucumber BDD</span>
+          <span class="tool-chip">Page Object Model</span>
+          <span class="tool-chip">Data-Driven</span>
+        </div>
+      </div>
+      <div class="tool-category">
+        <div class="tool-cat-title">Languages & DB</div>
+        <div class="tool-list">
+          <span class="tool-chip highlight">Java</span>
+          <span class="tool-chip highlight">C</span>
+          <span class="tool-chip highlight">MySQL</span>
+          <span class="tool-chip">SQL Queries</span>
+        </div>
+      </div>
+      <div class="tool-category">
+        <div class="tool-cat-title">CI/CD & version control</div>
+        <div class="tool-list">
+          <span class="tool-chip highlight">Jenkins</span>
+          <span class="tool-chip highlight">Git</span>
+          <span class="tool-chip highlight">GitHub</span>
+          <span class="tool-chip">CI Pipelines</span>
+        </div>
+      </div>
+      <div class="tool-category">
+        <div class="tool-cat-title">API & performance</div>
+        <div class="tool-list">
+          <span class="tool-chip highlight">Postman</span>
+          <span class="tool-chip highlight">Apache JMeter</span>
+          <span class="tool-chip">REST APIs</span>
+          <span class="tool-chip">Load Testing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in touch</div>
+  <h2>Let's build quality<br>software together</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="avail-badge"><div class="avail-dot"></div>Available for new roles</div>
+      <h3>Open to opportunities</h3>
+      <p>Aspiring QA Automation Engineer actively looking for entry-level QA or automation roles where I can apply my testing skills, grow in a professional environment, and contribute to quality-driven teams.</p>
+      <div class="contact-links">
+        <a href="mailto:bkshrivel2005@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          bkshrivel2005@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/poornimaa-shri" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          linkedin.com/in/poornimaa-shri
+        </a>
+        <a href="https://github.com/Poornimaa-Shri" class="contact-link">
+          <div class="contact-link-icon" style="font-family: var(--mono); font-size: 11px;">gh</div>
+          github.com/Poornimaa-Shri
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="skill-card" style="margin-bottom: 1.5rem;">
+        <div class="skill-card-title" style="font-size: 0.95rem; margin-bottom: 0.5rem;">Let's connect!</div>
+        <div class="skill-card-desc" style="margin-bottom: 0; font-size: 13px;">Feel free to drop me an email about opportunities, collaborations, or just to say hi. I'm actively seeking my first QA role.</div>
+      </div>
+      <div class="skill-card" style="border-color: rgba(62,207,142,0.2);">
+        <div class="section-label" style="margin-bottom: 0.75rem; font-size: 10px;">What I bring</div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          <div style="display:flex; align-items:flex-start; gap:0.65rem;">
+            <span style="color:var(--accent); font-size:13px; margin-top:1px; flex-shrink:0;">✓</span>
+            <span style="font-size:13px; color:var(--ink2); font-weight:300; line-height:1.5;">Strong grasp of SDLC, STLC &amp; Agile — I understand the full software delivery lifecycle, not just the test phase.</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:0.65rem;">
+            <span style="color:var(--accent); font-size:13px; margin-top:1px; flex-shrink:0;">✓</span>
+            <span style="font-size:13px; color:var(--ink2); font-weight:300; line-height:1.5;">Hands-on with Java + Selenium — built real end-to-end automation from scratch on the Zenvora Living project.</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:0.65rem;">
+            <span style="color:var(--accent); font-size:13px; margin-top:1px; flex-shrink:0;">✓</span>
+            <span style="font-size:13px; color:var(--ink2); font-weight:300; line-height:1.5;">Detail-oriented tester — I don't just find bugs, I document them clearly and communicate root causes effectively.</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:0.65rem;">
+            <span style="color:var(--accent); font-size:13px; margin-top:1px; flex-shrink:0;">✓</span>
+            <span style="font-size:13px; color:var(--ink2); font-weight:300; line-height:1.5;">Quality-first mindset — I believe bugs caught early save teams time, cost, and credibility.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2026 <span>Poornimaa Shri V K</span> · QA Automation Engineer</div>
+  <div class="footer-copy" style="display:flex; gap:1.5rem;">
+    <a href="#skills" style="text-decoration:none; color: inherit;">Skills</a>
+    <a href="#projects" style="text-decoration:none; color: inherit;">Projects</a>
+    <a href="#contact" style="text-decoration:none; color: inherit;">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80 * i);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
